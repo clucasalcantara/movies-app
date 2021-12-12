@@ -48,3 +48,28 @@ export const searchMovie = async (term: string) => {
     throw new Error(`Error fetching category page data ${error}`);
   }
 };
+
+export const getMovieById = async (movieId: string) => {
+    console.log({ movieId })
+  try {
+    const { data: { getMovieById } } = await GraphQLClient.query({
+      query: gql`
+        query getMovieById {
+            getMovieById(id: ${parseInt(movieId)}) {
+                id
+                title
+                poster_path
+                overview
+                vote_average
+                release_date
+            }
+        }
+      `,
+    });
+    
+    return getMovieById;
+  } catch (error) {
+      console.log('Here', { error })
+    throw new Error(`Error fetching category page data ${error}`);
+  }
+};

@@ -34,6 +34,18 @@ const Home = ({ popularMovies }: { popularMovies: { results: Movie[] } }) => {
       query: { term: search },
     });
 
+  const handleEnter = (e: any) => {
+    if (e.key === "Enter") {
+      return router.push({
+        pathname: '/search',
+        query: { term: search },
+      });
+    }
+    
+    return null;
+  }
+    
+
   return (
     <Box w="100%" height="100vh">
       <Head>
@@ -46,7 +58,7 @@ const Home = ({ popularMovies }: { popularMovies: { results: Movie[] } }) => {
         <Text fontSize='md'>Find your movie</Text>
         <Box w="50%" mt="4">
           <InputGroup>
-            <Input placeholder='Search your title' onChange={(e) => setSearchTerm(e.target.value)}/>
+            <Input placeholder='Search your title' onChange={(e) => setSearchTerm(e.target.value)} onKeyPress={(e) => handleEnter(e)}/>
             <InputRightElement onClick={() => search.length && handleSearch()} cursor={search.length ? "pointer" : 'not-allowed'}>
               <SearchIcon />
             </InputRightElement>

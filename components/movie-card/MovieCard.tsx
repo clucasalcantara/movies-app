@@ -1,9 +1,13 @@
+import { useRouter } from 'next/router';
 import { Flex, Image, Text } from '@chakra-ui/react';
 
 export default function MovieCard({
+    id,
     title,
     poster_path
-}: { title: string; poster_path: string }) {
+}: { id: number; title: string; poster_path: string }) {
+    const router = useRouter();
+
     return (
     <Flex
         align="center"
@@ -12,6 +16,8 @@ export default function MovieCard({
         overflow='hidden'
         mt="8"
         flexDirection="column"
+        onClick={() => router.push(`/movie/${id}`)}
+        cursor="pointer"
     >
         <Image
             style={{ borderRadius: '8px'}}
