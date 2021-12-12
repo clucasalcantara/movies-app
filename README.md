@@ -1,7 +1,17 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# TMDB Quick Frontend App
+
+This is a frontend app using nextjs and typescript to showcase the consumption of the [tmdb movies api](https://developers.themoviedb.org/)
+
 ## Getting Started
 
+You gonna need the [tmdb graphql api](https://github.com/clucasalcantara/movies-app-api) to run this app.
+
+After get the api up and running fou will be able to follow the steps bellow.
+
+
+## Running the frontend app 
 First, run the development server:
 
 ```bash
