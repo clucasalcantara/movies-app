@@ -24,21 +24,24 @@ export const getPopularMovies = async () => {
   }
 };
 
-export const searchMovie = async (term: string) => {
+export const searchMovie = async (term: string, page: string) => {
+  console.log({ term, page })
   try {
     const { data: { searchMovies } } = await GraphQLClient.query({
       query: gql`
         query searchMovies {
-            searchMovies(query: "${term}") {
-                results {
-                    id
-                    title
-                    poster_path
-                }
-                pagination {
-                    total_results
-                }
+          searchMovies(searchTerm: "${term}", page: ${parseInt(page)}) {
+            results {
+              id
+              title
+              poster_path
             }
+            pagination {
+              total_results
+              total_pages
+              page
+            }
+          }
         }
       `,
     });
